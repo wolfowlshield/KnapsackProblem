@@ -20,7 +20,7 @@ public class KnapsackProblem {
         sortBoxes();
     }
 
-    public void duplicateBoxSolver() { // This is bugged
+    public void duplicateBoxSolver() {
         getMostValuableBoxes(0, boxes);
         System.out.println("Most valuable solution is: " + bestValue);
         for (Box b:bestSolution) {
