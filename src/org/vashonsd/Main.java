@@ -9,8 +9,10 @@ public class Main {
 
         System.out.println("how big do you want the bag to be?");
         int carryCap = input.nextInt();
+
         System.out.println("How Many boxes do you want?");
         int numBoxes = input.nextInt();
+
         int[] prices = new int[numBoxes];
         int[] weights = new int[numBoxes];
         for (int i = 0; i < numBoxes; i++) {

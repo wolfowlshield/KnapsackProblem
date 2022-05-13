@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Knapsack {
     int carryCapacity;
-    int totalValue = 0;
     int currentWeight = 0;
     ArrayList<Box> boxes = new ArrayList<>();
 
@@ -13,11 +12,7 @@ public class Knapsack {
     }
 
     public int getTotalValue() {
-        totalValue = 0;
-        for (Box b: boxes) {
-            totalValue += b.getPrice();
-        }
-        return totalValue;
+        return calculateValue();
     }
 
     public int getCarryCapacity() {
@@ -34,13 +29,11 @@ public class Knapsack {
 
     public void addBox(int index, Box box) {
         boxes.add(index, box);
-        totalValue += box.getPrice();
         currentWeight += box.getWeight();
     }
 
     public void removeBox(int index) {
         Box box = boxes.remove(index);
-        totalValue -= box.getPrice();
         currentWeight -= box.getWeight();
     }
 
@@ -52,12 +45,13 @@ public class Knapsack {
         this.boxes = boxes;
     }
 
-    public void calculateValue() {
-        totalValue = 0;
+    private int calculateValue() {
+        int totalValue = 0;
         if (!boxes.isEmpty()) {
             for (Box b:boxes) {
                 totalValue += b.getPrice();
             }
         }
+        return totalValue;
     }
 }

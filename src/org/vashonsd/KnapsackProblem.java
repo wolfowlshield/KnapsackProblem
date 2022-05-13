@@ -20,7 +20,7 @@ public class KnapsackProblem {
         sortBoxes();
     }
 
-    public void duplicateBoxSolver() {
+    public void duplicateBoxSolver() { // Solves for the problem if duplicates are allowed
         getMostValuableBoxes(0, boxes);
         System.out.println("Most valuable solution is: " + bestValue);
         for (Box b:bestSolution) {
@@ -32,14 +32,14 @@ public class KnapsackProblem {
         boxes.sort(new BoxComparator());
     }
 
-    private void getMostValuableBoxes(int boxesIndex, ArrayList<Box> boxes) {
+    private void getMostValuableBoxes(int boxesIndex, ArrayList<Box> boxes) { // Tree traversal done badly... Essentially I'm checking all possible solutions (in order) until I find one that fills the bag completely, then we can stop and see what the "Most Valuable" solution was.
         for (Box b: boxes) {
             if (bag.getTotalValue() > bestValue) {
                 bestValue = bag.getTotalValue();
                 bestSolution.clear();
                 bestSolution.addAll(bag.getBoxes());
             }
-            if (bag.getCurrentWeight() == bag.getCarryCapacity()) {
+            if (bag.getCurrentWeight() == bag.getCarryCapacity()) { // Because we sorted them by most value per weight, as soon as we hit carry capacity, we will 100% have passed or are on the best solution.
                 break;
             }
 
